@@ -19,24 +19,28 @@ import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
-import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
+import main from './main/main.component';
+import project from './project/project.module';
 
 import './app.css';
 
 angular.module('officeApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, footer, main, constants, util
+  account, admin, 'validation.match', navbar, footer, constants, util, main, project
 ])
   .config(routeConfig)
-  .run(function($rootScope, $location, Auth) {
+  .run(function ($transitions, $state) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in
 
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      Auth.isLoggedIn(function(loggedIn) {
-        if(next.authenticate && !loggedIn) {
-          $location.path('/login');
+    $transitions.onStart({}, trans => {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+      let auth = trans.injector().get('Auth');
+      auth.isLoggedIn(loggedIn => {
+        if (trans.to().authenticate && !loggedIn) {
+          return $state.go('login');
         }
       });
     });
@@ -45,6 +49,6 @@ angular.module('officeApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBoot
 angular.element(document)
   .ready(() => {
     angular.bootstrap(document, ['officeApp'], {
-      strictDi: true
+      strictDi : true
     });
   });
