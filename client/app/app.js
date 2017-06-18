@@ -4,11 +4,9 @@ import angular from 'angular';
 // import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
-import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
-import uiBootstrap from 'angular-ui-bootstrap';
-import 'angular-validation-match';
+// import uiBootstrap from 'angular-ui-bootstrap';
 
 import {
   routeConfig
@@ -18,7 +16,6 @@ import _Auth from '../components/auth/auth.module';
 import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
-import footer from '../components/footer/footer.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import main from './main/main.component';
@@ -26,8 +23,8 @@ import project from './project/project.module';
 
 import './app.css';
 
-angular.module('officeApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, footer, constants, util, main, project
+angular.module('officeApp', [ngCookies, ngResource, uiRouter, _Auth,
+  account, admin, navbar, constants, util, main, project
 ])
   .config(routeConfig)
   .run(function ($transitions, $state) {

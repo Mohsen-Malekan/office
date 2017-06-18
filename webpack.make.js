@@ -42,16 +42,11 @@ module.exports = function makeWebpackConfig(options) {
             polyfills: './client/polyfills.js',
             vendor: [
                 'angular',
-                'angular-animate',
-                'angular-aria',
                 'angular-cookies',
                 'angular-resource',
 
-                'angular-sanitize',
-
-                'angular-ui-bootstrap',
-                'angular-ui-router',
-                'lodash'
+                // 'angular-ui-bootstrap',
+                'angular-ui-router'
             ]
         };
     }

@@ -1,8 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">List</h1>
-      {{vm.projects}}
+<div class="row">
+  <div class="col-sm-6 col-md-4 project-item" ng-repeat="item in vm.projects">
+    <div class="thumbnail">
+      <div class="caption project-caption">
+        <div>
+          <h2 class="project-title">{{item.name}}</h2>
+          <span class="project-date small pull-left">{{item.createdAt | date : "MM/dd/yyyy"}}</span>
+        </div>
+        <p class="project-description">
+          {{item.description | limitTo:245}}
+          <span ng-show="!item.description" class="text-muted">توضیحات ندارد</span>
+          <span ng-show="item.description.length > 200"> ...</span>
+        </p>
+        <div>
+          <div class="btn-group btn-group-xs">
+            <a class="btn btn-default btn-xs" ng-click="vm.delete(item)">
+              <span class="fa fa-trash-o fa-2x"></span>
+            </a>
+            <a class="btn btn-default btn-xs">
+              <span class="fa fa-edit fa-2x"></span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

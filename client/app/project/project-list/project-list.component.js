@@ -2,7 +2,15 @@ import angular from 'angular';
 
 export class ProjectListController {
   /*@ngInject*/
-  constructor () {
+  constructor ($http) {
+    this.$http = $http;
+  }
+
+  delete(project){
+    return this.$http.delete(`api/projects/${project._id}`)
+      .then(()=>{
+        console.log('>>> deleted: ', project);
+      });
   }
 }
 

@@ -16,7 +16,8 @@ export default function routes ($stateProvider) {
       resolve      : {
         /*@ngInject*/
         projects($http){
-          return $http.get('api/projects').then(res => res.data);
+          // return $http.get('api/projects').then(res => res.data);
+          return $http.get('app/project/projects.json').then(res => res.data);
         }
       }
     });
