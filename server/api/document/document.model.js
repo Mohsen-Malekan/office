@@ -1,10 +1,10 @@
 'use strict';
 
 import mongoose from 'mongoose';
-import {registerEvents} from './project.events';
+import {registerEvents} from './document.events';
 
-let ProjectSchema = new mongoose.Schema({
-  name        : {
+let DocumentSchema = new mongoose.Schema({
+  name : {
     type     : String,
     required : true
   },
@@ -13,11 +13,11 @@ let ProjectSchema = new mongoose.Schema({
     type    : Date,
     default : Date.now
   },
-  creator     : {
+  creator : {
     type     : String,
     required : true
   }
 });
 
-registerEvents(ProjectSchema);
-export default mongoose.model('Project', ProjectSchema);
+registerEvents(DocumentSchema);
+export default mongoose.model('Document', DocumentSchema);

@@ -5,15 +5,15 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-var ProjectEvents = new EventEmitter();
+var DocumentEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-ProjectEvents.setMaxListeners(0);
+DocumentEvents.setMaxListeners(0);
 
 // Model events
 var events = {
-  save: 'save',
-  remove: 'remove'
+  save   : 'save',
+  remove : 'remove'
 };
 
 // Register the event emitter to the model events
@@ -26,10 +26,10 @@ function registerEvents(Project) {
 
 function emitEvent(event) {
   return function(doc) {
-    ProjectEvents.emit(event + ':' + doc._id, doc);
-    ProjectEvents.emit(event, doc);
+    DocumentEvents.emit(`${event}:${doc._id}`, doc);
+    DocumentEvents.emit(event, doc);
   };
 }
 
 export {registerEvents};
-export default ProjectEvents;
+export default DocumentEvents;

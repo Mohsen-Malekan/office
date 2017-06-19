@@ -8,8 +8,8 @@ import angular from 'angular';
 angular.module('officeApp')
   .directive('mongooseError', function() {
     return {
-      restrict: 'A',
-      require: 'ngModel',
+      restrict : 'A',
+      require  : 'ngModel',
       link(scope, element, attrs, ngModel) {
         element.on('keydown', () => ngModel.$setValidity('mongoose', true));
       }

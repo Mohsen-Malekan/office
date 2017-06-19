@@ -4,13 +4,12 @@ import angular from 'angular';
 
 export default class SignupController {
   user = {
-    name: '',
-    email: '',
-    password: ''
+    name     : '',
+    email    : '',
+    password : ''
   };
   errors = {};
   submitted = false;
-
 
   /*@ngInject*/
   constructor(Auth, $state) {
@@ -23,9 +22,9 @@ export default class SignupController {
 
     if(form.$valid) {
       return this.Auth.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        password: this.user.password
+        name     : this.user.name,
+        email    : this.user.email,
+        password : this.user.password
       })
         .then(() => {
           // Account created, redirect to home

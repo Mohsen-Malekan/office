@@ -1,0 +1,16 @@
+.document-title {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.document-date {
+  margin-top: 10px;
+}
+
+.document-description {
+  height: 90px;
+}
+
+.document-tools {
+  text-align: left;
+}

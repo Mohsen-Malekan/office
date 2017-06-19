@@ -1,17 +1,17 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/projects              ->  index
- * POST    /api/projects              ->  create
- * GET     /api/projects/:id          ->  show
- * PUT     /api/projects/:id          ->  upsert
- * PATCH   /api/projects/:id          ->  patch
- * DELETE  /api/projects/:id          ->  destroy
+ * GET     /api/documents              ->  index
+ * POST    /api/documents              ->  create
+ * GET     /api/documents/:id          ->  show
+ * PUT     /api/documents/:id          ->  upsert
+ * PATCH   /api/documents/:id          ->  patch
+ * DELETE  /api/documents/:id          ->  destroy
  */
 
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
-import Project from './project.model';
+import Document from './document.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -64,54 +64,54 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Projects
+// Gets a list of Documents
 export function index(req, res) {
-  return Project.find().exec()
+  return Document.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Project from the DB
+// Gets a single Document from the DB
 export function show(req, res) {
-  return Project.findById(req.params.id).exec()
+  return Document.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Project in the DB
+// Creates a new Document in the DB
 export function create(req, res) {
-  return Project.create(req.body)
+  return Document.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Upserts the given Project in the DB at the specified ID
+// Upserts the given Document in the DB at the specified ID
 export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Project.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Document.findOneAndUpdate({_id : req.params.id}, req.body, {new : true, upsert : true, setDefaultsOnInsert : true, runValidators : true}).exec()
 
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Updates an existing Project in the DB
+// Updates an existing Document in the DB
 export function patch(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
   }
-  return Project.findById(req.params.id).exec()
+  return Document.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Project from the DB
+// Deletes a Document from the DB
 export function destroy(req, res) {
-  return Project.findById(req.params.id).exec()
+  return Document.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

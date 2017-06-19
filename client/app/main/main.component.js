@@ -4,7 +4,7 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor () {
+  constructor() {
   }
 }
 

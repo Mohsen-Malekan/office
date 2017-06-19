@@ -99,7 +99,7 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
      */
     changePassword(oldPassword, newPassword, callback) {
       return User.changePassword({
-        id: currentUser._id
+        id : currentUser._id
       }, {
         oldPassword,
         newPassword

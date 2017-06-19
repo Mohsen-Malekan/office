@@ -12,13 +12,13 @@ import oauthButtons from '../../components/oauth-buttons';
 
 export default angular.module('officeApp.account', [uiRouter, login, settings, signup, oauthButtons])
   .config(routing)
-  .run(function ($transitions) {
+  .run(function($transitions) {
     'ngInject';
 
     $transitions.onStart({}, trans => {
-      let next    = trans.to();
+      let next = trans.to();
       let current = trans.from();
-      if (next.name === 'logout' && current && current.name && !current.authenticate) {
+      if(next.name === 'logout' && current && current.name && !current.authenticate) {
         next.referrer = current.name;
       }
     });

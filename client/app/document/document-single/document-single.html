@@ -1,0 +1,23 @@
+<div class="thumbnail">
+  <div class="caption">
+    <div>
+      <h2 class="document-title">{{vm.document.name}}</h2>
+      <span class="document-date small pull-left">{{vm.document.createdAt | date : "MM/dd/yyyy"}}</span>
+    </div>
+    <p class="document-description">
+      {{vm.document.description | limitTo:295}}
+      <span ng-show="!vm.document.description" class="text-muted">توضیحات ندارد</span>
+      <span ng-show="vm.document.description.length > 295"> ...</span>
+    </p>
+    <div class="document-tools">
+      <div class="btn-group btn-group-xs">
+        <a class="btn btn-default btn-xs">
+          <span class="fa fa-edit fa-2x"></span>
+        </a>
+        <a class="btn btn-default btn-xs" ng-click="vm.remove(vm.document)">
+          <span class="fa fa-trash-o fa-2x"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

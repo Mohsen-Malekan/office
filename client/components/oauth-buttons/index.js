@@ -13,12 +13,12 @@ export function OauthButtonsController($window) {
 export default angular.module('officeApp.oauthButtons', [])
   .directive('oauthButtons', function() {
     return {
-      template: require('./oauth-buttons.html'),
-      restrict: 'EA',
-      controller: OauthButtonsController,
-      controllerAs: 'OauthButtons',
-      scope: {
-        classes: '@'
+      template     : require('./oauth-buttons.html'),
+      restrict     : 'EA',
+      controller   : OauthButtonsController,
+      controllerAs : 'OauthButtons',
+      scope        : {
+        classes : '@'
       }
     };
   })

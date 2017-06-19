@@ -19,15 +19,15 @@ import navbar from '../components/navbar/navbar.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import main from './main/main.component';
-import project from './project/project.module';
+import documents from './document/document.module';
 
 import './app.css';
 
 angular.module('officeApp', [ngCookies, ngResource, uiRouter, _Auth,
-  account, admin, navbar, constants, util, main, project
+  account, admin, navbar, constants, util, main, documents
 ])
   .config(routeConfig)
-  .run(function ($transitions, $state) {
+  .run(function($transitions, $state) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in
 
@@ -36,7 +36,7 @@ angular.module('officeApp', [ngCookies, ngResource, uiRouter, _Auth,
 
       let auth = trans.injector().get('Auth');
       auth.isLoggedIn(loggedIn => {
-        if (trans.to().authenticate && !loggedIn) {
+        if(trans.to().authenticate && !loggedIn) {
           return $state.go('login');
         }
       });

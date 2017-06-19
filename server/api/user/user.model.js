@@ -8,10 +8,10 @@ import {registerEvents} from './user.events';
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: String,
-  email: {
-    type: String,
-    lowercase: true,
+  name  : String,
+  email : {
+    type      : String,
+    lowercase : true,
     required() {
       if(authTypes.indexOf(this.provider) === -1) {
         return true;
@@ -20,12 +20,12 @@ var UserSchema = new Schema({
       }
     }
   },
-  role: {
-    type: String,
-    default: 'user'
+  role : {
+    type    : String,
+    default : 'user'
   },
-  password: {
-    type: String,
+  password : {
+    type : String,
     required() {
       if(authTypes.indexOf(this.provider) === -1) {
         return true;
@@ -34,10 +34,10 @@ var UserSchema = new Schema({
       }
     }
   },
-  provider: String,
-  salt: String,
-  google: {},
-  github: {}
+  provider : String,
+  salt     : String,
+  google   : {},
+  github   : {}
 });
 
 /**
@@ -49,8 +49,8 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
-      name: this.name,
-      role: this.role
+      name : this.name,
+      role : this.role
     };
   });
 
@@ -59,8 +59,8 @@ UserSchema
   .virtual('token')
   .get(function() {
     return {
-      _id: this._id,
-      role: this.role
+      _id  : this._id,
+      role : this.role
     };
   });
 
@@ -96,7 +96,7 @@ UserSchema
       return true;
     }
 
-    return this.constructor.findOne({ email: value }).exec()
+    return this.constructor.findOne({ email : value }).exec()
       .then(user => {
         if(user) {
           if(this.id === user.id) {

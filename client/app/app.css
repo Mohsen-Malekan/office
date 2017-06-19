@@ -1,5 +1,9 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~bootstrap-social/bootstrap-social.css';
+@import '~ng-dialog/css/ngDialog.css';
+@import '~ng-dialog/css/ngDialog-theme-default.css';
+@import '~bootstrap-rtl/dist/css/bootstrap-rtl.css';
+
 /**
  * Bootstrap Fonts
  */
@@ -46,8 +50,6 @@
   padding: 0.2em 0;
 }
 
-
-
 * {
   font-family: 'wYekan';
   outline: 0 !important;
@@ -60,8 +62,8 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
+@import 'document/document-single/document-single.css';
 @import 'main/main.css';
-@import 'project/project-list/project-list.css';
 @import '../components/footer/footer.css';
 @import '../components/modal/modal.css';
 @import '../components/oauth-buttons/oauth-buttons.css';

@@ -5,8 +5,8 @@ import angular from 'angular';
 
 export class NavbarComponent {
   menu = [{
-    title: 'پروژه ها',
-    state: 'project.list'
+    title : 'اسناد',
+    state : 'document.list'
   }];
 
   isCollapsed = true;
@@ -23,7 +23,7 @@ export class NavbarComponent {
 
 export default angular.module('directives.navbar', [])
   .component('navbar', {
-    template: require('./navbar.html'),
-    controller: NavbarComponent
+    template   : require('./navbar.html'),
+    controller : NavbarComponent
   })
   .name;
