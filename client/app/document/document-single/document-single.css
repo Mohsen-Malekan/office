@@ -1,10 +1,15 @@
+document-single .thumbnail:hover {
+  background-color: antiquewhite;
+}
+
 .document-title {
-  display: inline-block;
+  /*display: inline-block;*/
   margin-top: 10px;
 }
 
-.document-date {
-  margin-top: 10px;
+.document-date > div {
+  text-align: right;
+  margin-left: 5px;
 }
 
 .document-description {

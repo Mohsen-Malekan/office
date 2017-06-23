@@ -4,6 +4,7 @@ import angular from 'angular';
 // import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
+import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
 // import uiBootstrap from 'angular-ui-bootstrap';
@@ -23,7 +24,7 @@ import documents from './document/document.module';
 
 import './app.css';
 
-angular.module('officeApp', [ngCookies, ngResource, uiRouter, _Auth,
+angular.module('officeApp', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth,
   account, admin, navbar, constants, util, main, documents
 ])
   .config(routeConfig)
@@ -39,6 +40,7 @@ angular.module('officeApp', [ngCookies, ngResource, uiRouter, _Auth,
         if(trans.to().authenticate && !loggedIn) {
           return $state.go('login');
         }
+        return true;
       });
     });
   });

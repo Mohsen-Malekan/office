@@ -76,6 +76,7 @@
         "no-multi-spaces": [2, {                                    //disallow use of multiple spaces
           "exceptions": {
             "VariableDeclarator": true,
+            "AssignmentExpression": true,
             "ImportDeclaration": true
           }
         }],
@@ -159,7 +160,7 @@
         "key-spacing": [2, {                                        //enforce spacing between keys and values in object literal properties
             "align": "colon",
             "beforeColon": true,
-            "afterColon": true
+            "afterColon": true,
         }],
         "keyword-spacing": [2, {
             "before": true,

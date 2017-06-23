@@ -1,0 +1,48 @@
+<div class="thumbnail">
+  <div class="caption">
+    <fieldset>
+      <legend>
+        <span style="cursor: pointer" ng-click="vm.viewInfo = !vm.viewInfo">
+          <span class="fa fa-minus-square-o" ng-show="vm.viewInfo"></span>
+          <span class="fa fa-plus-square-o" ng-show="!vm.viewInfo"></span>
+          <span>ویرایش اطلاعات سند</span>
+        </span>
+      </legend>
+      <form name="docForm" ng-submit="vm.saveInfo(vm.doc)" novalidate ng-show="vm.viewInfo">
+        <div class="form-group" ng-class="{'has-error': docForm.name.$invalid}">
+          <input type="text" class="form-control input-lg" id="name" name="name" placeholder="عنوان" required
+                 ng-maxlength="100"
+                 ng-model="vm.doc.name">
+          <div>
+            <span class="help-block" ng-show="docForm.name.$error.maxlength">حدکثر 100 کاراکتر مجاز است</span>
+            <span class="help-block" ng-show="docForm.name.$error.required">وارد کردن نام سند الزامی است</span>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': docForm.des.$invalid}">
+        <textarea class="form-control" id="des" name="des" placeholder="توضیحات"
+                  ng-maxlength="1000" style="min-height: 110px"
+                  ng-model="vm.doc.description"></textarea>
+          <div>
+            <span class="help-block" ng-show="docForm.name.$error.maxlength">حدکثر 1000 کاراکتر مجاز است</span>
+          </div>
+        </div>
+        <div class="document-tools">
+          <div class="document-date pull-right">
+            <div class="label label-success" title="تاریخ ایجاد"> ایجاد:
+              {{vm.doc.createdAt | date : "MM/dd/yyyy"}}
+            </div>
+            <div class="label label-primary" title="آخرین ویرایش">ویرایش:
+              {{(vm.doc.editedAt || vm.doc.createdAt) | date : "MM/dd/yyyy"}}
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary" ng-disabled="docForm.$invalid || !vm._hasChanged(vm.doc)">
+              ذخیره
+              <i class="fa fa-refresh fa-spin fa-lg fa-fw" ng-show="vm.isSaving"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</div>

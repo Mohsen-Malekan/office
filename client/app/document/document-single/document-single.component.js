@@ -3,16 +3,13 @@ import modal from '../../../components/modal/modal.service';
 
 export class DocumentSingleController {
   /*@ngInject*/
-  constructor(Document, Modal) {
-    this.Document = Document;
-    this.Modal    = Modal;
+  constructor(Modal) {
+    this.Modal = Modal;
   }
 
   remove(document) {
     this.Modal.confirm()
-      .then(() => {
-        return this.parent.remove(document);
-      });
+      .then(() => this.parent.remove(document));
   }
 }
 

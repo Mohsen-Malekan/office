@@ -5,17 +5,29 @@ import {registerEvents} from './document.events';
 
 let DocumentSchema = new mongoose.Schema({
   name : {
-    type     : String,
-    required : true
+    type      : String,
+    required  : true,
+    maxlength : 100
   },
-  description : String,
-  createdAt   : {
+  description : {
+    type      : String,
+    maxlength : 1000
+  },
+  createdAt : {
+    type    : Date,
+    default : Date.now
+  },
+  editedAt : {
     type    : Date,
     default : Date.now
   },
   creator : {
     type     : String,
     required : true
+  },
+  html : {
+    type    : String,
+    default : ''
   }
 });
 
