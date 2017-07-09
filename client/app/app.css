@@ -3,6 +3,7 @@
 @import '~ng-dialog/css/ngDialog.css';
 @import '~ng-dialog/css/ngDialog-theme-default.css';
 @import '~bootstrap-rtl/dist/css/bootstrap-rtl.css';
+@import '~textangular/dist/textAngular.css';
 
 /**
  * Bootstrap Fonts
@@ -63,6 +64,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.btn-toolbar {
+  margin-right: 0;
+}
+
+.btn-toolbar > .btn-group {
+  margin-right: 1px;
 }
 
 /* Component styles are injected through gulp */

@@ -26,7 +26,7 @@ export function routerDecorator($state, Auth, $transitions) {
           if(is) {
             return true;
           }
-          return $state.go('login');
+          return $state.target('login');
         });
     }
   });

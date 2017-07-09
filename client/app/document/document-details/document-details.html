@@ -1,12 +1,23 @@
-<document-info-editor document="vm.document"></document-info-editor>
+<!--<document-info-editor document="vm.document"></document-info-editor>-->
+
 <div class="thumbnail tools">
-  <button class="btn btn-default btn-sm" title="پاراگراف جدید" ng-click="vm.newElement('paragraph')">
+  <button class="btn btn-default btn-sm" title="پاراگراف جدید" ng-click="vm.addText()">
     <i class="fa fa-paragraph"></i>
   </button>
 </div>
 
+<!--<div document-content="vm.document.html"></div>-->
 <div class="row">
-  <div class="col-md-12">
-    <div document-content="vm.document.html"></div>
+  <div class="col-md-12" style="padding-left: 9px" ng-repeat="part in vm.parts track by $index">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <i class="fa fa-edit fa-lg" style="cursor: pointer" ng-show="!part.editing" ng-click="part.editing = true"></i>
+        <i class="fa fa-save fa-lg" style="cursor: pointer" ng-show="part.editing" ng-click="part.editing = false"></i>
+      </div>
+      <div class="panel-body">
+        <div ng-bind-html="part.content" ng-if="!part.editing"></div>
+        <div text-angular ng-model="part.content" ng-if="part.editing"></div>
+      </div>
+    </div>
   </div>
 </div>
